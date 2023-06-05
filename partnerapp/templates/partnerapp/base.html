@@ -1,0 +1,19 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Partner Consolidation App {% endblock %}</title>
+    <!-- Common head content -->
+</head>
+<body>
+    <nav>
+        {% include 'partnerapp/toolbar.html' %}
+    </nav>
+    <main>
+        <!-- Content specific to each page -->
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer> </footer>
+</body>
+</html>

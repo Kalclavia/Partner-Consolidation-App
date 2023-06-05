@@ -1,0 +1,34 @@
+<!-- add_partner.html -->
+{% extends 'partnerapp/base.html' %}
+
+{% block title %} Add Partner {% endblock %}
+
+{% block content %}
+<body>
+    <h1>Add Partner</h1>
+  
+<form method="POST" action="{% url 'add_partner' %}">
+  {% csrf_token %}
+  
+  <label for="vertical_sector">Vertical Sector:</label>
+  <input type="text" id="vertical_sector" name="vertical_sector" required><br>
+
+  <label for="primary_partner">Primary Partner:</label>
+  <input type="text" id="primary_partner" name="primary_partner" required><br>
+
+  <label for="subagent">Subagent:</label>
+  <input type="text" id="subagent" name="subagent" required><br>
+
+  <label for="use_case">Use Case:</label>
+  <input type="text" id="use_case" name="use_case" required><br>
+
+  <label for="solution">Solution:</label>
+  <input type="text" id="solution" name="solution" required><br>
+
+  <label for="oem">OEM:</label>
+  <input type="text" id="oem" name="oem" required><br>
+
+  <button type="submit">Add Partner</button>
+</form>
+</body>
+{% endblock %}

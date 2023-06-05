@@ -1,0 +1,20 @@
+<!-- toolbar.html -->
+
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Website</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Homepage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'partner_list' %}">Partners</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_partner' %}">Add Partner</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
