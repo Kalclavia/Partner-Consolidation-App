@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "Abhishek1!"
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 if SECRET_KEY is None:
   print("Please setup a SECRET_KEY in the Secrets (Environment variables) tab. See README.md for more.")
   exit(1)
@@ -41,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'partnerapp.apps.PartnerappConfig'
+    'partnerapp.apps.PartnerappConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [

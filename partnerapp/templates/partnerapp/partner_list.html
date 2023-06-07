@@ -15,30 +15,22 @@
             <th> Solution </th>
             <th> OEMs </th>
         </tr>
-        {% for partner in partners %}
-            {% for subagent in partner.subagents.all %}
-                {% for usecase in subagent.usecase_set.all %}
-                    {% for solutionassociation in usecase.solutionassociation_set.all %}
-                        <tr>
-                            <td>
-                                {% for vertical_sector in subagent.primary_partner.vertical_sectors.all %}
-                                    {{ vertical_sector.name }}{% if not forloop.last %}, {% endif %}
-                                {% endfor %}</td>
-                            <td>{{ partner.primary_partner.name }}</td>
-                            <td>{{ subagent.name }}</td>
-                            <td>{{ usecase.name }}</td>
-                            <td>{{ solutionassociation.solution.name }}</td>
-                            <td>
-                                {% for oemassociation in solutionassociation.solution.oemassociation_set.all %}
-                                    {{ oemassociation.oem.name }}
-                                {% endfor %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                {% endfor %}
+        {% for association in subagent_associations %}
+        <tr>
+          <td>
+            {% for vertical in association.verticals.all %}
+              {{ vertical.name }}{% if not forloop.last %}, {% endif %}
             {% endfor %}
-        {% endfor %}
-    </table>
+          </td>
+          <td>{{ association.subagent.primary_partner.name }}</td>
+          <td>{{ association.subagent.name }}</td>
+          <td>{{ association.use_case.name }}</td>
+          <td>{{ association.solution.name }}</td>
+          <td>{{ association.OEM.name }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </body>
 {% endblock %}
 

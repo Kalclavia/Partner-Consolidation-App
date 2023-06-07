@@ -19,13 +19,13 @@ class Subagent(models.Model):
 
     # other fields related to Subagent
 
-class Subagent_Association(models.Model):
+class ProductAssociation(models.Model):
     subagent = models.ForeignKey(Subagent, on_delete=models.SET_NULL, null = True)
     use_case = models.ForeignKey('UseCase', on_delete=models.SET_NULL, null = True)
     solution = models.ForeignKey('Solution', on_delete=models.SET_NULL, null = True)
     oems = models.ManyToManyField('OEM', help_text='Specify one or many OEMs for this solution')    
     verticals = models.ManyToManyField('VerticalSector', help_text='Specify one or many Verticals for this solution')
-    name = models.CharField(max_length=100, default = "Leave This Blank")
+    name = models.CharField(max_length=100, default = "This will auto-fill, don't change")
     def __str__(self):
         self.name = "{} for {} from {}".format(self.solution.name, self.use_case.name, self.subagent.name)    
         """String for representing the Model object."""

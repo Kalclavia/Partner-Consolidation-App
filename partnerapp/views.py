@@ -1,12 +1,19 @@
 from django.shortcuts import render, redirect
-from .models import VerticalSector, PrimaryPartner, Subagent, UseCase, Solution, OEM
+from .models import VerticalSector, PrimaryPartner, Subagent, UseCase, Solution, OEM, ProductAssociation
 
 def home (request):
     return render(request, 'partnerapp/home.html')
 
 def partner_list(request):
     partners = PrimaryPartner.objects.all()
-    return render(request, 'partnerapp/partner_list.html', {'partners': partners})
+    ProductAssociations = ProductAssociation.objects.all()
+
+    context = {
+        'partners': partners,
+        'ProductAssociations': ProductAssociations,
+    }
+
+    return render(request, 'partnerapp/partner_list.html', context)
 
 def add_partner(request):
     if request.method == 'POST':
