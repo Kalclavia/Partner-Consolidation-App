@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import PrimaryPartner, Subagent, UseCase, Solution, OEM, VerticalSector, ProductAssociation
 
 from import_export import resources
-from import_export.admin import ExportActionMixin
+from import_export.admin import ExportActionMixin, ImportExportModelAdmin
 from import_export.fields import Field
 from django.core import serializers
 
@@ -18,7 +18,9 @@ class PrimaryPartnerResource(resources.ModelResource):
     class Meta:
         model = PrimaryPartner
         fields = ('name')
-class PrimaryPartnerAdmin(ExportActionMixin, admin.ModelAdmin):
+        import_id_fields = ('name',)
+        skip_unchanged = True
+class PrimaryPartnerAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = PrimaryPartnerResource
 
 
@@ -71,6 +73,7 @@ class ProductAssociationResource(resources.ModelResource):
     class Meta:
         model = ProductAssociation
         fields = ('verticals', 'primary partner', 'subagent','use_case', 'solution', 'oems')
+        export_order = fields
     
     def dehydrate_verticals(self, obj):
         verticals_list = obj.verticals.all()
