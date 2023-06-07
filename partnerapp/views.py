@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import VerticalSector, PrimaryPartner, Partner, Subagent, UseCase, Solution, OEM
+from .models import VerticalSector, PrimaryPartner, Subagent, UseCase, Solution, OEM
 
 def home (request):
     return render(request, 'partnerapp/home.html')
 
 def partner_list(request):
-    partners = Partner.objects.all()
+    partners = PrimaryPartner.objects.all()
     return render(request, 'partnerapp/partner_list.html', {'partners': partners})
 
 def add_partner(request):
